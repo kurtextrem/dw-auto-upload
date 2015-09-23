@@ -40,9 +40,9 @@ var Dwdav = (function() {
                 });
 
                 if (filePath.indexOf('\\') !== -1)
-                    fs.createReadStream(instanceConfig + '\\' + filePath).pipe(req);
+                    fs.createReadStream(instanceConfig.cwd + '\\' + filePath).pipe(req);
                 else
-                    fs.createReadStream(instanceConfig + '/' + filePath).pipe(req);
+                    fs.createReadStream(instanceConfig.cwd + '/' + filePath).pipe(req);
             });
 
             promise.request = request;
