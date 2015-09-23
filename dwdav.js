@@ -39,7 +39,10 @@ var Dwdav = (function() {
                     resolve(body);
                 });
 
-                fs.createReadStream(filePath).pipe(request);
+                if (filePath.indexOf('\\') !== -1)
+                    fs.createReadStream(instanceConfig + '\\' + filePath).pipe(req);
+                else
+                    fs.createReadStream(instanceConfig + '/' + filePath).pipe(req);
             });
 
             promise.request = request;
