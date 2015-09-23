@@ -23,7 +23,7 @@ var Dwdav = (function() {
         }
 
         function putFile(filePath) {
-            var request,
+            var req,
                 promise,
                 requestOptions = getOpts();
 
@@ -31,7 +31,7 @@ var Dwdav = (function() {
             requestOptions.method = 'PUT';
 
             promise = new Promise(function(resolve, reject) {
-                request = request(requestOptions, function(err, res, body) {
+                req = request(requestOptions, function(err, res, body) {
                     if (err) {
                         return reject(err);
                     }
@@ -39,10 +39,10 @@ var Dwdav = (function() {
                     resolve(body);
                 });
 
-                fs.createReadStream(filePath).pipe(request);
+                fs.createReadStream(filePath).pipe(req);
             });
 
-            promise.request = request;
+            promise.request = req;
 
             return promise;
         }
