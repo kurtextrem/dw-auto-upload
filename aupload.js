@@ -10,7 +10,7 @@
         });
 
     watcher.on('change', function(path, stats) {
-        dwdav.putFile(config.cwd + '/' + path).then(function(res) {
+        dwdav.putFile('/' + path).then(function(res) {
             console.log('Cartridge file successfully uploaded ' + res);
         }, function(err) {
             console.log(err);
