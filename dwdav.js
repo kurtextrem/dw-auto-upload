@@ -27,7 +27,7 @@ var Dwdav = (function() {
                 promise,
                 requestOptions = getOpts();
 
-            requestOptions.uri = '/' + filePath;
+            requestOptions.uri = '/' + filePath.replace(/\\/g, '/');
             requestOptions.method = 'PUT';
 
             promise = new Promise(function(resolve, reject) {
