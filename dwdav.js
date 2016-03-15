@@ -36,6 +36,10 @@ var Dwdav = (function() {
                         return reject(err);
                     }
 
+                    if (res.statusCode >= 400) {
+                        reject(new Error("http error status code: " + res.statusCode));
+                    }
+
                     resolve(body);
                 });
 
